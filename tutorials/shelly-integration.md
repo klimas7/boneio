@@ -153,23 +153,23 @@ packages:
 **Co tu się zawiera:**
 
 **Build flags:**
-- `SHELLY_KUCHNIA=0` - identyfikator (Shelly na pozycji 0 w tablicy sterownie kuchnię)
-- `SHELLY_WYSPA=1` - identyfikator (Shelly na pozycji 1 sterownie wyspę)
+- `SHELLY_KUCHNIA=0` - identyfikator (Shelly na pozycji 0 w tablicy sterownie kuchnia)
+- `SHELLY_WYSPA=1` - identyfikator (Shelly na pozycji 1 sterownie wyspa)
 - Mogą być użyte w kodzie
 
 **Tablice globalne:**
 - `shelly_ips` - tablica IP adresów Shelly (w tym domu są 2 urządzenia)
-  - `shelly_ips[0]` = `192.168.0.165` (Shelly kuchni)
-  - `shelly_ips[1]` = `192.168.0.101` (Shelly wyspy)
+  - `shelly_ips[0]` = `192.168.0.165` (Shelly kuchnia)
+  - `shelly_ips[1]` = `192.168.0.101` (Shelly wyspa)
   
-- `shelly_state` - tablica przechowywująca ostatni znany stan (włączony/wyłączony)
+- `shelly_state` - tablica przechowująca ostatni znany stan (włączony/wyłączony)
   - `shelly_state[0]` = stan Shelly nr 0
   - `shelly_state[1]` = stan Shelly nr 1
 
 **Include:**
 - `shelly_common: !include shelly_common.yaml` - ładuje uniwersalną logikę
 
-### Include w głównym pliku (`boneIO_32_10.yaml`)
+### Include w głównym pliku (`boneIO.yaml`)
 
 W głównym pliku konfiguracji wystarczy jeden include:
 
@@ -278,11 +278,11 @@ W pliku konfiguracyjnym `boneIO_dl.yaml` (dimmer LED) jest skrypt `salon` realiz
 
 **Jak ta maszyna stanów pracuje:**
 
-| Akcja | Rezultat                                                                                  |
-|-------|-------------------------------------------------------------------------------------------|
-| **VLP (3+ sec)** | Wyłącza: L01A, L01B, L02, SHELLY_KUCHNIA, SHELLY_WYSPA                                    |
-| **LP (1-3 sec)** | Wyłącza: L01A, L01B, L02, SHELLY_KUCHNIA, SHELLY_WYSPA                                    |
-| **SP (< 1 sec)** | Cykl stanów:                                                                              |
+| Akcja  | Rezultat                                                                                  |
+|--------|-------------------------------------------------------------------------------------------|
+| VLP    | Wyłącza: L01A, L01B, L02, SHELLY_KUCHNIA, SHELLY_WYSPA                                    |
+| LP | Wyłącza: L01A, L01B, L02, SHELLY_KUCHNIA, SHELLY_WYSPA                                    |
+| SP | Cykl stanów:                                                                              |
 | → Stan 1 | Wszystko wyłączone → Włącz L01 + L02 (blenda + TV)                                        |
 | → Stan 2 | Sprawdź Shelly kuchnia → Jeśli wyłączone, włącz ją. W przeciwnym przypadku pomiń ten krok |
 | → Stan 3 | L01 wyłącz, L02 włącz (zmiana zakresu)                                                    |
@@ -303,11 +303,11 @@ Ten przykład pokazuje jak za pomocą jednego przycisku można:
 ## API Shelly
 Shelly 1 Mini Gen4, podstawowe operacje sterowania przełącznikiem są realizowane poprzez HTTP GET do endpointów RPC:
 
-| Operacja | URL |
-|----------|-----|
-| Włączenie | `http://IP/rpc/Switch.Set?id=0&on=true` |
-| Wyłączenie | `http://IP/rpc/Switch.Set?id=0&on=false` |
-| Stan | `http://IP/rpc/Switch.GetStatus?id=0` |
+| Operacja | URL                                          |
+|----------|----------------------------------------------|
+| Włączenie | `GET http://IP/rpc/Switch.Set?id=0&on=true`  |
+| Wyłączenie | `GET http://IP/rpc/Switch.Set?id=0&on=false` |
+| Stan | `GET http://IP/rpc/Switch.GetStatus?id=0`    |
 
 ---
 
