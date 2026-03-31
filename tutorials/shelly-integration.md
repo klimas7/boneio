@@ -278,11 +278,11 @@ W pliku konfiguracyjnym `boneIO_dl.yaml` (dimmer LED) jest skrypt `salon` realiz
 
 **Jak ta maszyna stanów pracuje:**
 
-| Akcja  | Rezultat                                                                                  |
-|--------|-------------------------------------------------------------------------------------------|
-| VLP    | Wyłącza: L01A, L01B, L02, SHELLY_KUCHNIA, SHELLY_WYSPA                                    |
-| LP | Wyłącza: L01A, L01B, L02, SHELLY_KUCHNIA, SHELLY_WYSPA                                    |
-| SP | Cykl stanów:                                                                              |
+| Akcja    | Rezultat                                                                                  |
+|----------|-------------------------------------------------------------------------------------------|
+| VLP      | Wyłącza: L01A, L01B, L02, SHELLY_KUCHNIA, SHELLY_WYSPA                                    |
+| LP       | Wyłącza: L01A, L01B, L02, SHELLY_KUCHNIA, SHELLY_WYSPA                                    |
+| SP       | Cykl stanów:                                                                              |
 | → Stan 1 | Wszystko wyłączone → Włącz L01 + L02 (blenda + TV)                                        |
 | → Stan 2 | Sprawdź Shelly kuchnia → Jeśli wyłączone, włącz ją. W przeciwnym przypadku pomiń ten krok |
 | → Stan 3 | L01 wyłącz, L02 włącz (zmiana zakresu)                                                    |
