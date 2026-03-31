@@ -10,8 +10,8 @@ ale nie przejmuje logiki automatyki.
 
 Kilka porad, które mogą pomóc rzeczywistym wdrożeniu BoneIO:
 
-- **[Poradnik - Szablony w ESPHome](tutorials/template-guide.md)** - Jak używać szablonów na przykładzie on-multi-click
-- **[Poradnik - Integracja BoneIO z Shelly](tutorials/shelly-integration.md)** - Jak zintegrować BoneIO z urządzeniami Shelly poprzez HTTP API
+- **[Poradnik - Szablony w ESPHome](tutorials/template-guide.md)** - Użycie szablonów na przykładzie on-multi-click
+- **[Poradnik - Integracja BoneIO z Shelly](tutorials/shelly-integration.md)** - Integracja BoneIO z urządzeniami Shelly poprzez HTTP API
 
 ## Dokumentacja
 - [BoneIO](https://boneio.io/)
