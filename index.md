@@ -14,5 +14,5 @@ Kilka porad, które mogą pomóc przy rzeczywistym wdrożeniu BoneIO:
 - **[Integracja BoneIO z Shelly](tutorials/shelly-integration.md)** - Integracja BoneIO z Shelly poprzez HTTP API
 
 ## Dokumentacja
-- [BoneIO](https://boneio.io/)
-- [ESPHome Documentation](https://esphome.eu/)
+- [BoneIO](https://boneio.eu/)
+- [ESPHome Documentation](https://esphome.io/)
