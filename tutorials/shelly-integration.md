@@ -62,9 +62,10 @@ script:
           on_response:
             then:
               - lambda: |-
+                  auto ip = id(shelly_ips)[index];
                   if (response->status_code == 200) {
                     id(shelly_state)[index] = onOff;
-                    ESP_LOGI("shelly_on_off", "State set for %s to %d", ip.c_str(), onOff);
+                    ESP_LOGI("shelly_on_off", "State set for %s to %d", ip.c_str(), onOff); 
                   } else {
                     ESP_LOGE("shelly_on_off", "Failed to set state for %s, status code: %d", ip.c_str(), response->status_code);
                   }
