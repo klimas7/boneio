@@ -278,15 +278,15 @@ W pliku konfiguracyjnym `boneIO_dl.yaml` (dimmer LED) jest skrypt `salon` realiz
 
 **Jak ta maszyna stanów pracuje:**
 
-| Akcja    | Rezultat                                                                                  |
-|----------|-------------------------------------------------------------------------------------------|
-| VLP      | Wyłącza: L01A, L01B, L02, SHELLY_KUCHNIA, SHELLY_WYSPA                                    |
-| LP       | Wyłącza: L01A, L01B, L02, SHELLY_KUCHNIA, SHELLY_WYSPA                                    |
-| SP       | Cykl stanów:                                                                              |
-| → Stan&nbsp;1 | Wszystko wyłączone → Włącz L01 + L02 (blenda + TV)                                        |
-| → Stan&nbsp;2 | Sprawdź Shelly kuchnia → Jeśli wyłączone, włącz ją. W przeciwnym przypadku pomiń ten krok |
-| → Stan&nbsp;3 | L01 wyłącz, L02 włącz (zmiana zakresu)                                                    |
-| → Stan&nbsp;4 | L01 włącz, L02 wyłącz (zmiana zakresu)                                                    |
+| Akcja         | Rezultat                                                                                  |
+|---------------|-------------------------------------------------------------------------------------------|
+| VLP           | Wyłącza: L01A, L01B, L02, SHELLY_KUCHNIA, SHELLY_WYSPA                                    |
+| LP            | Wyłącza: L01A, L01B, L02, SHELLY_KUCHNIA, SHELLY_WYSPA                                    |
+| SP            | Cykl stanów:                                                                              |
+| Stan&nbsp;1   | Wszystko wyłączone → Włącz L01 + L02 (blenda + TV)                                        |
+| Stan&nbsp;2 | Sprawdź Shelly kuchnia → Jeśli wyłączone, włącz ją. W przeciwnym przypadku pomiń ten krok |
+| Stan&nbsp;3 | L01 wyłącz, L02 włącz (zmiana zakresu)                                                    |
+| Stan&nbsp;4 | L01 włącz, L02 wyłącz (zmiana zakresu)                                                    |
 
 **Kluczowe momenty:**
 
