@@ -22,7 +22,7 @@ Przyciski są podłączone do sterownika głównego, a ich stan jest dystrybuowa
 
 ### Dystrybucja stanu przycisku przez UDP
 
-W sterowniku głównym publikuję wybrane wejścia (m.in. `S11_L`) do dwóch providerów:
+W sterowniku głównym publikuję wybrane wejścia (m.in. `S11_L`) do dwóch urządzeń:
 
 ```yaml
 udp:
@@ -84,7 +84,7 @@ To daje spójne zachowanie: jedno długie przytrzymanie przy wyjściu i każdy s
           ESP_LOGI("master_off", "end");
 ```
 
-Zastosowanie `lambda` i listy świateł `lights[]` daje bardzo zwarty i czytelny kod - jedna pętla obsługuje wszystkie obwody bez powielania tych samych akcji.
+Zastosowanie `lambda` i listy świateł/urządzeń `lights[]` daje bardzo zwarty i czytelny kod - jedna pętla obsługuje wszystkie obwody bez powielania tych samych akcji.
 
 ### Skrypt `master_off` w `boneIO_dl.yaml`
 
