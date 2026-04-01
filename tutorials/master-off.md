@@ -18,7 +18,9 @@ Na tej instalacji pracują 3 sterowniki:
 
 Przyciski są podłączone do sterownika głównego, a ich stan jest dystrybuowany do sterowników LED z wykorzystaniem `packet_transport` (UDP).
 
-## Dystrybucja stanu przycisku przez UDP
+## Implementacja
+
+### Dystrybucja stanu przycisku przez UDP
 
 W sterowniku głównym publikuję wybrane wejścia (m.in. `S11_L`) do dwóch providerów:
 
@@ -55,7 +57,7 @@ Po stronie sterowników LED odbieram zdarzenie `S11_L` i wykorzystuję ten sam g
 
 To daje spójne zachowanie: jedno długie przytrzymanie przy wyjściu i każdy sterownik gasi swoje obwody.
 
-## Skrypt `master_off` w `boneIO.yaml`
+### Skrypt `master_off` w `boneIO.yaml`
 
 ```yaml
   - id: master_off
@@ -84,7 +86,7 @@ To daje spójne zachowanie: jedno długie przytrzymanie przy wyjściu i każdy s
 
 Zastosowanie `lambda` i listy świateł `lights[]` daje bardzo zwarty i czytelny kod - jedna pętla obsługuje wszystkie obwody bez powielania tych samych akcji.
 
-## Skrypt `master_off` w `boneIO_dl_02.yaml`
+### Skrypt `master_off` w `boneIO_dl.yaml`
 
 ```yaml
   - id: master_off
@@ -105,7 +107,7 @@ Zastosowanie `lambda` i listy świateł `lights[]` daje bardzo zwarty i czytelny
           ESP_LOGI("master_off", "end");
 ```
 
-## Wywołanie z przycisku na sterowniku głównym (`S11_L`, VLP)
+### Wywołanie z przycisku na sterowniku głównym (`S11_L`, VLP)
 
 ```yaml
 binary_sensor:
@@ -125,7 +127,7 @@ binary_sensor:
               id: master_off
 ```
 
-## Co dostosować u siebie
+### Co dostosować u siebie
 
 - listę świateł w tablicy `lights[]`
 - wywołania Shelly (`SHELLY_KUCHNIA`, `SHELLY_WYSPA`)
@@ -134,5 +136,5 @@ binary_sensor:
 
 ---
 
-Po pełniejszy opis integracji Shelly zajrzyj do `tutorials/shelly-integration.md`.
-Możesz też skorzystać z poradnikio dotyczących szablonów, które pozwolą Ci uniknąć powielania kodu i utrzymać go w czystości - `tutorials/template-guide.md`.
+Po pełniejszy opis integracji Shelly zajrzyj do [Integracja BoneIO z Shelly](tutorials/shelly-integration.md).<br />
+Opis szablonów znajdziesz w [Szablony w ESPHome](tutorials/template-guide.md).
