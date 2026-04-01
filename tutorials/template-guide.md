@@ -133,3 +133,6 @@ Przeniesienie logiki do skryptu pozwala pisać logikę (przynajmniej mi) bardzie
 Użycie C++ w `lambda` daje pełną swobodę w pisaniu warunków i logiki sterowania,
 a parametry `sn` i `pt` pozwalają na uniwersalność skryptu dla różnych przycisków i typów naciśnięć.
 
+---
+
+Więcej szczegółów znajdziesz w dokumentacji ESPHome

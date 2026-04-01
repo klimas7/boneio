@@ -12,6 +12,7 @@ Kilka porad, które mogą pomóc przy rzeczywistym wdrożeniu BoneIO:
 
 - **[Szablony w ESPHome](tutorials/template-guide.md)** - Użycie szablonów na przykładzie on-multi-click
 - **[Integracja BoneIO z Shelly](tutorials/shelly-integration.md)** - Integracja BoneIO z Shelly poprzez HTTP API
+- **[Master Off](tutorials/master-off.md)** - Implementacja funkcji Master Off dla całego oświetlenia
 
 ## Dokumentacja
 - [BoneIO](https://boneio.eu/)
