@@ -10,6 +10,7 @@ ale nie przejmuje logiki automatyki.
 
 Kilka porad, które mogą pomóc przy rzeczywistym wdrożeniu BoneIO:
 
+- **[Zestaw doświadczalny](tutorials/test-setup.md)** - Tablica testowa do weryfikacji automatyzacji przed wdrożeniem
 - **[Szablony w ESPHome](tutorials/template-guide.md)** - Użycie szablonów na przykładzie on-multi-click
 - **[Integracja BoneIO z Shelly](tutorials/shelly-integration.md)** - Integracja BoneIO z Shelly poprzez HTTP API
 - **[Master Off](tutorials/master-off.md)** - Implementacja funkcji Master Off dla całego oświetlenia
