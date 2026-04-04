@@ -5,7 +5,7 @@ title: Integracja BoneIO z Shelly
 
 ## Studium przypadku
 
-Podczas mojej ostatniej realizacji klient zdecydował nie integrować podświetlanie mebli kuchennych (oświetlenie LED) z BoneIO,
+Podczas mojej ostatniej realizacji klient zdecydował nie integrować podświetlenia mebli kuchennych (oświetlenie LED) z BoneIO,
 podczas gdy cała reszta oświetlenia domowego była sterowana przez BoneIO. 
 Sygnalizowałem, że będzie to uciążliwe, szczególnie że w domu przewidziany był przycisk master wyłączający całe oświetlenie.
 
@@ -13,7 +13,7 @@ I rzeczywiście, po wdrożeniu klient szybko stwierdził, że to błąd.
 Problem polegał na tym, że kiedy wyłączano całe światło w domu za pomocą mastera, oświetlenie LED w kuchni pozostawało włączone. 
 Oznaczało to konieczność przejścia przez cały salon, aby ręcznie wyłączyć podświetlenie w kuchni.
 
-Zaproponowałem zastosowanie modułu dopuszkowego **Shelly 1 Mini Gen4**, który byłby sterowny bezpośrednio z BoneIO poprzez HTTP API. 
+Zaproponowałem zastosowanie modułu dopuszkowego **Shelly 1 Mini Gen4**, który byłby sterowany bezpośrednio z BoneIO poprzez HTTP API. 
 W ten sposób przyciski w domu (w tym master) mogą kontrolować moduły Shelly.
 
 Ten opis pokazuje, jak BoneIO może być rozszerzany o dodatkowe urządzenia, dostępne w sieci lokalnej, bez konieczności całkowitej przebudowy systemu.
