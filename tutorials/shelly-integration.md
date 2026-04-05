@@ -162,10 +162,26 @@ packages:
 - `shelly_ips` - tablica IP adresów Shelly (w tym domu są 2 urządzenia)
   - `shelly_ips[0]` = `192.168.0.165` (Shelly kuchnia)
   - `shelly_ips[1]` = `192.168.0.101` (Shelly wyspa)
-  
+
+> ⚠️ **Ważne:** Adresy IP Shelly są wpisane na stałe w konfiguracji, dlatego każde urządzenie Shelly **musi mieć stały adres IP** — najlepiej przez rezerwację DHCP na routerze lub konfigurację statycznego IP bezpośrednio w aplikacji Shelly. W przeciwnym razie po restarcie routera adresy mogą się zmienić i integracja przestanie działać.
+
 - `shelly_state` - tablica przechowująca ostatni znany stan (włączony/wyłączony)
   - `shelly_state[0]` = stan Shelly nr 0
   - `shelly_state[1]` = stan Shelly nr 1
+
+> ℹ️ **Inicjalizacja stanu po starcie:** Tablica `shelly_state` inicjalizuje się wartościami `false` — stan jest nieznany do momentu pierwszego wywołania `shelly_check_state`. Aby pobrać rzeczywisty stan od razu po uruchomieniu sterownika, można dodać wywołanie w sekcji `on_boot`:
+> ```yaml
+> esphome:
+>   on_boot:
+>     priority: -100
+>     then:
+>       - script.execute:
+>           id: shelly_check_state
+>           index: SHELLY_KUCHNIA
+>       - script.execute:
+>           id: shelly_check_state
+>           index: SHELLY_WYSPA
+> ```
 
 **Include:**
 - `shelly_common: !include shelly_common.yaml` - ładuje uniwersalną logikę
@@ -277,25 +293,24 @@ W pliku konfiguracyjnym `boneIO_dl.yaml` (dimmer LED) jest skrypt `salon` realiz
           }
 ```
 
-**Jak ta maszyna stanów pracuje:**
+**Jak ta logika pracuje w praktyce:**
 
-| Akcja         | Rezultat                                                                                  |
-|---------------|-------------------------------------------------------------------------------------------|
-| VLP           | Wyłącza: L01A, L01B, L02, SHELLY_KUCHNIA, SHELLY_WYSPA                                    |
-| LP            | Wyłącza: L01A, L01B, L02, SHELLY_KUCHNIA, SHELLY_WYSPA                                    |
-| SP            | Cykl stanów:                                                                              |
-| Stan&nbsp;1   | Wszystko wyłączone → Włącz L01 + L02 (blenda + TV)                                        |
-| Stan&nbsp;2 | Sprawdź Shelly kuchnia → Jeśli wyłączone, włącz ją. W przeciwnym przypadku pomiń ten krok |
-| Stan&nbsp;3 | L01 wyłącz, L02 włącz (zmiana zakresu)                                                    |
-| Stan&nbsp;4 | L01 włącz, L02 wyłącz (zmiana zakresu)                                                    |
+- `LP` oraz `VLP` realizują prostą akcję „wyłącz wszystko” — gaszone są lokalne światła `L01A`, `L01B`, `L02` oraz oba moduły Shelly.
+- `SP` steruje przede wszystkim lokalnym oświetleniem w salonie, czyli kombinacją `L01` (blenda) i `L02` (LED TV).
+- Dodatkowo w jednym z kroków skrypt sprawdza stan `SHELLY_KUCHNIA` i włącza go tylko wtedy, gdy moduł jest aktualnie wyłączony.
+
+Można więc spojrzeć na to tak, że `SP` składa się z dwóch części:
+
+1. **Przełączanie lokalnych świateł** — zmiana układu `L01` i `L02` w zależności od bieżącego stanu.
+2. **Dodatkowy warunek dla kuchni** — jeśli `SHELLY_KUCHNIA` jest wyłączone, skrypt może je włączyć jako jeden z elementów scenariusza.
 
 **Kluczowe momenty:**
 
-1. **Odczyt stanu Shelly:** `id(shelly_check_state)->execute(SHELLY_KUCHNIA)` - pobiera rzeczywisty stan
-2. **Sprawdzenie warunku:** `auto isOnS01 = id(shelly_state)[SHELLY_KUCHNIA]` - używa pobrane wartości
-3. **Warunkowe włączenie:** `if (!isOnS01)` - włącza Shelly **tylko jeśli jest wyłączone**
+1. **Odczyt stanu Shelly:** `id(shelly_check_state)->execute(SHELLY_KUCHNIA)` - pobiera rzeczywisty stan modułu.
+2. **Sprawdzenie warunku:** `auto isOnS01 = id(shelly_state)[SHELLY_KUCHNIA]` - korzysta z odczytanej wartości.
+3. **Warunkowe włączenie:** `if (!isOnS01)` - włącza Shelly **tylko wtedy, gdy jest wyłączone**.
 
-Ten przykład pokazuje jak za pomocą jednego przycisku można:
+Ten przykład pokazuje, jak za pomocą jednego przycisku można:
 - Sterować wieloma LED-ami lokalnie
 - Odczytać stan modułów Shelly via HTTP
 - Implementować warunkową logikę (włącz Shelly, tylko jeśli jest wyłączone)

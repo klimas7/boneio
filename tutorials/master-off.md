@@ -136,5 +136,5 @@ binary_sensor:
 
 ---
 
-Po pełniejszy opis integracji Shelly zajrzyj do [Integracja BoneIO z Shelly](tutorials/shelly-integration.md).<br />
-Opis szablonów znajdziesz w [Szablony w ESPHome](tutorials/template-guide.md).
+Po pełniejszy opis integracji Shelly zajrzyj do [Integracja BoneIO z Shelly](shelly-integration.md).<br />
+Opis szablonów znajdziesz w [Szablony w ESPHome](template-guide.md).
