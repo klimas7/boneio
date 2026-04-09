@@ -3,8 +3,6 @@ layout: default
 title: Poradnik - Szablony w ESPHome
 ---
 
-# Poradnik - Szablony w ESPHome
-
 ## Architektura obsługi przycisków
 
 W moim przypadku przyciski podłączone do BoneIO mają dokładnie takie samo zachowanie.
@@ -17,9 +15,9 @@ W reakcji na takie zdarzenie wywoływany jest skrypt, który otrzymuje informacj
 Okazało się, że definicja każdego przycisku jest niemal identyczna, różni się tylko nazwą przycisku i skryptem,
 który jest wywoływany. Bardzo mocno zaciemniło to konfigurację, ponieważ mamy wiele powtórzeń tej samej logiki detekcji SP/LP/VLP dla każdych przycisków.
 
-## Użycie template'ów w detekcji wielokrotnych kliknięć
+## Użycie szablonu w detekcji wielokrotnych kliknięć
 
-Rozwiązaniem tego problemu mogą być **szablony** (templates) w ESPHome.
+Rozwiązaniem tego problemu są **szablony** (template) w ESPHome.
 Zamiast powtarzać logikę detekcji (Short Push, Long Push, Very Long Push) dla każdego przycisku, zdefiniowałem sobie **szablon** w pliku `on-multi-click.yaml`:
 (W tym samym katalogu co główny plik konfiguracyjny `boneio.yaml`)
 
@@ -51,7 +49,7 @@ Zamiast powtarzać logikę detekcji (Short Push, Long Push, Very Long Push) dla 
         pt: "SP"
 ```
 
-## Jak używać template'u
+## Jak używam szablonu
 
 W definicji czujnika binarnego (przycisku) wystarczy odwołać się do szablonu z odpowiednimi parametrami:
 

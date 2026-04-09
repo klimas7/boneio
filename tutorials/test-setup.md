@@ -44,3 +44,10 @@ Zestaw pozwala mi na:
 
 Każda automatyzacja, zanim trafi na inwestycję, jest najpierw sprawdzana właśnie tutaj.
 
+## Jak pracuję z konfiguracją (IntelliJ)
+
+Do przygotowania i wdrożeń używam IntelliJ IDEA. W praktyce pozwala mi to wygodnie edytować YAML,
+szybko przeszukiwać konfigurację między plikami (`boneIO_32_10.yaml`, `boneIO_dl_01.yaml`, `boneIO_dl_02.yaml`)
+i porównywać zmiany przed wgraniem ich na sterowniki. Połączenie IntelliJ oraz tablicy testowej
+znacząco skraca czas uruchomienia automatyki na obiekcie.
+

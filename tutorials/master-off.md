@@ -5,7 +5,7 @@ title: Poradnik - Master Off
 
 ## Wstęp
 
-Przycisk `Master Off` daje użytkownikowi jeden, szybki sposób na wygaszenie oświetlenia przy wyjściu z domu (ID `S11_L`).
+Przycisk `Master Off` daje mi jeden, szybki sposób na wygaszenie oświetlenia przy wyjściu z domu (ID `S11_L`).
 W mojej ostatniej realizacji taki przycisk jest fizycznie przy drzwiach wyjściowych i uruchamia scenariusz wyłączenia całego oświetlenia.
 
 ## Kontekst tej inwestycji

@@ -16,7 +16,7 @@ Oznaczało to konieczność przejścia przez cały salon, aby ręcznie wyłączy
 Zaproponowałem zastosowanie modułu dopuszkowego **Shelly 1 Mini Gen4**, który byłby sterowany bezpośrednio z BoneIO poprzez HTTP API. 
 W ten sposób przyciski w domu (w tym master) mogą kontrolować moduły Shelly.
 
-Ten opis pokazuje, jak BoneIO może być rozszerzany o dodatkowe urządzenia, dostępne w sieci lokalnej, bez konieczności całkowitej przebudowy systemu.
+W tym poradniku pokazuję, jak rozszerzam BoneIO o dodatkowe urządzenia dostępne w sieci lokalnej, bez konieczności całkowitej przebudowy systemu.
 
 ## Architektura
 
@@ -154,8 +154,8 @@ packages:
 **Co tu się zawiera:**
 
 **Build flags:**
-- `SHELLY_KUCHNIA=0` - identyfikator (Shelly na pozycji 0 w tablicy sterownie kuchnia)
-- `SHELLY_WYSPA=1` - identyfikator (Shelly na pozycji 1 sterownie wyspa)
+- `SHELLY_KUCHNIA=0` - identyfikator (Shelly na pozycji 0 w tablicy, sterowanie kuchnią)
+- `SHELLY_WYSPA=1` - identyfikator (Shelly na pozycji 1 w tablicy, sterowanie wyspą)
 - Mogą być użyte w kodzie
 
 **Tablice globalne:**
