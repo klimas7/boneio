@@ -10,9 +10,38 @@ Sterowanie opieram o stan `LED_STATE`, który jest publikowany z dimmera łazien
 W trybie automatycznym wentylator włącza się po `1min`, a wyłącza po `2min` od zaniku sygnału.
 Niezależnie od timerów mogę też sterować wentylatorem ręcznie z przycisku (bez czekania na opóźnienia).
 
+Schemat przepływu (automatyka + ręczne sterowanie):
+
+```text
+S09_G (SP) na dimmerze
+        |
+        v
+skrypt lazienka -> publish_state(LED_STATE)
+        |
+        v
+packet_transport (UDP) -> sterownik główny (remote_LED_STATE)
+        |
+        v
+logika ON/OFF + fan_cycle_active
+        |
+        +--> wentylator_on (delay 1min)  -> W01 ON
+        \--> wentylator_off (delay 2min) -> W01 OFF
+
+Ręcznie (niezależnie od timerów):
+S08_L (LP) -> id(W01).toggle().perform()
+```
+
 ## Skąd bierze się sygnał `LED_STATE`
 
-W `boneIO_dl_02.yaml` skrypt `lazienka` publikuje stan logiczny:
+Po stronie dimmera (`boneIO_dl_02.yaml`) `LED_STATE` jest zdefiniowany jako sensor typu `template`:
+
+```yaml
+binary_sensor:
+  - platform: template
+    id: LED_STATE
+```
+
+Następnie jest publikowany ze skryptu `lazienka`:
 
 - `id(LED_STATE).publish_state(true)` gdy oświetlenie strefy wejściowej jest aktywne,
 - `id(LED_STATE).publish_state(false)` gdy ta strefa zostaje wyłączona.
@@ -31,6 +60,24 @@ Przykład publikacji stanu po stronie dimmera (`boneIO_dl_02.yaml`):
                        || id(L08).current_values.is_on());
           id(LED_STATE).publish_state(!isLedOn);
         }
+```
+
+I jest udostępniany po UDP przez `packet_transport`:
+
+```yaml
+udp:
+
+packet_transport:
+  - id: transport
+    platform: udp
+    update_interval: 30s
+    encryption: 'SUPER_SECRET_KEY'
+    rolling_code_enable: false
+    binary_sensors:
+      - LED_STATE
+    providers:
+      - name: boneio-32-l-07-39d104
+        encryption: 'SUPER_SECRET_KEY'
 ```
 
 Pełniejszy przykład odbioru i reakcji na stan po stronie sterownika głównego (`boneIO_32_10.yaml`):
