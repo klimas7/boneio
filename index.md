@@ -18,8 +18,8 @@ Kilka porad, które mogą pomóc przy rzeczywistym wdrożeniu BoneIO:
 - **[Szablony w ESPHome](tutorials/template-guide.md)** - Użycie szablonów na przykładzie on-multi-click
 - **[Integracja BoneIO z Shelly](tutorials/shelly-integration.md)** - Integracja BoneIO z Shelly poprzez HTTP API
 - **[Master Off](tutorials/master-off.md)** - Implementacja funkcji Master Off dla całego oświetlenia
-- **[Wentylator i timery](tutorials/fan-timers.md)** - Opóźnione załączanie i wyłączanie wentylatora na podstawie `LED_STATE`
-- **[LED w komunikacji i czujniki ruchu](tutorials/led-motion-sensors.md)** - Trzy stany jasności i różne timery dla ruchu oraz przycisków
+- **[Wentylator i timery](tutorials/fan-timers.md)** - Opóźnione załączanie i wyłączanie wentylatora
+- **[LED w komunikacji i czujniki ruchu](tutorials/led-motion-sensors.md)** - Dwa stany jasności i różne timery dla ruchu oraz przycisków
 - **[Oświetlenie zewnętrzne: zmierzch i harmonogram](tutorials/outdoor-lighting-dusk-cron.md)** - Sterowanie oparte o czujnik zmierzchu i harmonogram `on_time`
 
 ## Dokumentacja
